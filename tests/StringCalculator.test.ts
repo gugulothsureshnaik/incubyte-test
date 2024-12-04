@@ -53,6 +53,15 @@ describe("StringCalculator", () => {
     expect(calculator.add("//;\n1;2")).toBe(3);
     expect(calculator.add("//|\n1|2|3")).toBe(6);
   });
+  test("should handle custom delimiters", () => {
+    expect(calculator.add("//[***]\n1***2***3")).toBe(6);
+  });
+  test("should handle custom delimiters", () => {
+    expect(calculator.add("//[*][%]\n1*2%3")).toBe(6);
+  });
+  test("should handle custom delimiters", () => {
+    expect(calculator.add("//[**][%%]\n1**2%%3")).toBe(6);
+  });
 
   test("should throw an error for negative numbers", () => {
     expect(() => calculator.add("1,-2,3")).toThrowError(
